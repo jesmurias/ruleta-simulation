@@ -46,7 +46,7 @@ Al final de la prueba:
 - Número de veces que se ha corrido la prueba
 - Veces que se ha ganado en la ronda
 - Capital disponible
-- en la ronda sin limite la salida debe incluir:
+- en Case B y C la salida debe incluir:
  .  Numero de veces que se ganó en esa ronda
  .  Numero de jugadas medio en esas 50 tandas 
  .  Total monedas dispobibles
