@@ -23,7 +23,7 @@ jobs:
         python-version: '3.13'
 
     - name: Instalar SDK de Gemini
-      run: pip install google-generativeai
+      run: pip install google-genai
 
     - name: Invocar a Gemini para reescribir el código
       env:

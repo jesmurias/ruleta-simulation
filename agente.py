@@ -1,8 +1,8 @@
 import os
-import google.generativeai as genai
+from google import genai
 
-# Configurar la API de Gemini con el secreto de GitHub
-genai.configure(api_key=os.environ["GEMINI_API_KEY"])
+# Inicializamos el cliente moderno (detecta automáticamente la variable GEMINI_API_KEY del entorno)
+client = genai.Client()
 
 # Leer el prompt que has escrito
 with open("PROMPT.md", "r") as f:
@@ -15,8 +15,11 @@ contexto = (
     "dentro de un bloque de código markdown de python. No añadas explicaciones de texto."
 )
 
-model = genai.GenerativeModel("gemini-1.5-pro")
-response = model.generate_content(f"{contexto}\n\nInstrucciones del usuario:\n{input_prompt}")
+# Invocamos al modelo actual usando la API moderna
+response = client.models.generate_content(
+    model='gemini-2.5-pro',
+    contents=f"{contexto}\n\nInstrucciones del usuario:\n{input_prompt}",
+)
 
 # Extraer el código del bloque markdown y guardarlo en ruleta.py
 texto_respuesta = response.text
