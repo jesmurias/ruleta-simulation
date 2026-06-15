@@ -17,7 +17,7 @@ contexto = (
 
 # Invocamos al modelo actual usando la API moderna
 response = client.models.generate_content(
-    model='gemini-2.5-pro',
+    model='gemini-2.5-flash',
     contents=f"{contexto}\n\nInstrucciones del usuario:\n{input_prompt}",
 )
 
