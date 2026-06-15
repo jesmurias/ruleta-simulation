@@ -1,9 +1,13 @@
-name: Ejecutar Simulación de Ruleta
+name: Agente Autónomo con Gemini
 
 on:
   push:
-    branches: [ main, master ]  # Se ejecuta cada vez que subes código
+    paths:
+      - 'PROMPT.md'
   workflow_dispatch:            # Te permite ejecutarlo manualmente con un botón desde la web de GitHub
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
 
 jobs:
   build:
@@ -18,5 +22,22 @@ jobs:
       with:
         python-version: '3.13'
 
-    - name: Ejecutar Script de la Ruleta
+    - name: Instalar SDK de Gemini
+      run: pip install google-generativeai
+
+    - name: Invocar a Gemini para reescribir el código
+      env:
+        GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      run: python agente.py
+
+    - name: Probar el nuevo código generado
       run: python ruleta.py
+
+    - name: Auto-guardar cambios en el repositorio si la prueba pasa
+      if: success()
+      run: |
+        git config --global user.name "Gemini Agent"
+        git config --global user.email "agent@gemini.ai"
+        git add ruleta.py
+        git commit -m "🤖 Refactor automático por Gemini basado en prompt.txt"
+        git push

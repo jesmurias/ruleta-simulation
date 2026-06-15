@@ -49,6 +49,7 @@ Al final de la prueba:
 - en la ronda sin limite la salida debe incluir:
  .  Numero de veces que se ganó en esa ronda
  .  Numero de jugadas medio en esas 50 tandas 
+ .  Total monedas dispobibles
 
 ## Requisitos de Ejecución
 - Python 3.13+
