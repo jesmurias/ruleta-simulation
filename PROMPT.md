@@ -50,6 +50,9 @@ Al final de la prueba:
  .  Numero de veces que se ganó en esa ronda
  .  Numero de jugadas medio en esas 50 tandas 
  .  Total monedas dispobibles
+- En el Caso B no se debe incluir la salida de todas las rondas, solo el resumen.
+- En el Caso C se debe incluir la salida de todas las rondas, solo el resumen.
+- Todos los casos deben incluir una descripción de lo que hacen.
 
 ## Requisitos de Ejecución
 - Python 3.13+

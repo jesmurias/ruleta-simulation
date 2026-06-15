@@ -39,5 +39,12 @@ jobs:
         git config --global user.name "Gemini Agent"
         git config --global user.email "agent@gemini.ai"
         git add ruleta.py
-	git commit -m "🤖 Refactor automático por Gemini basado en PROMPT.md"
-        git push
+        
+        # Evitamos que falle si por algún motivo no hubiera cambios reales que commitear
+        git diff-index --quiet HEAD || git commit -m "🤖 Refactor automático por Gemini basado en PROMPT.md"
+        
+        # Sincronizamos los commits remotos trayéndolos "detrás" de lo que ha hecho la IA
+        git pull --rebase origin main
+        
+        # Empujamos de forma segura usando el token de autenticación del propio flujo
+        git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git main
