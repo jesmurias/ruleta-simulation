@@ -39,5 +39,5 @@ jobs:
         git config --global user.name "Gemini Agent"
         git config --global user.email "agent@gemini.ai"
         git add ruleta.py
-        git commit -m "🤖 Refactor automático por Gemini basado en prompt.txt"
+	git commit -m "🤖 Refactor automático por Gemini basado en PROMPT.md"
         git push
