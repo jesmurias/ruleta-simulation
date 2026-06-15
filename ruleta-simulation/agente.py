@@ -1,4 +1,4 @@
-import os
+mport os
 import google.generativeai as genai
 
 # Configurar la API de Gemini con el secreto de GitHub
